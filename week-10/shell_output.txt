@@ -1,0 +1,40 @@
+$ rm todo.json
+
+$ todo h
+*** Commands list ***
+ * ls, list [-a]: list available [all] todo tasks
+ * add [long title]: add new task
+ * done [task-id]: complete task
+ * rm [task-id]: remove task
+
+$ todo ls
+
+$ todo add Добавить классы моделей
+$ todo add Добавить интерфейс для комманд
+$ todo add Добавить сервис, выполняющий команды
+$ todo add Добавить реализацию команд list, add, done и rm
+$ todo ls
+ 1 [TODO] Добавить классы моделей
+ 2 [TODO] Добавить интерфейс для комманд
+ 3 [TODO] Добавить сервис, выполняющий команды
+ 4 [TODO] Добавить реализацию команд list, add, done и rm
+
+$ todo done 1
+
+$ todo ls
+ 2 [TODO] Добавить интерфейс для комманд
+ 3 [TODO] Добавить сервис, выполняющий команды
+ 4 [TODO] Добавить реализацию команд list, add, done и rm
+
+$ todo ls -a
+ 1 [DONE] Добавить классы моделей
+ 2 [TODO] Добавить интерфейс для комманд
+ 3 [TODO] Добавить сервис, выполняющий команды
+ 4 [TODO] Добавить реализацию команд list, add, done и rm
+
+$ todo rm 1
+
+$ todo ls -a
+ 2 [TODO] Добавить интерфейс для комманд
+ 3 [TODO] Добавить сервис, выполняющий команды
+ 4 [TODO] Добавить реализацию команд list, add, done и rm
