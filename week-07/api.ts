@@ -12,15 +12,19 @@ interface User {
 
 const API_URL = "https://jsonplaceholder.typicode.com/users";
 
+async function fetchJson<T>(url: string): Promise<T> {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Ошибка запроса: ${response.status}`);
+  }
+
+  return (await response.json()) as T;
+}
+
 export async function fetchUser(id: number): Promise<User | null> {
   try {
-    const response = await fetch(`${API_URL}/${id}`);
-
-    if (!response.ok) {
-      throw new Error(`Ошибка запроса: ${response.status}`);
-    }
-
-    const user = (await response.json()) as User;
+    const user = await fetchJson<User>(`${API_URL}/${id}`);
     console.log(user.address.city);
 
     return user;
@@ -32,13 +36,7 @@ export async function fetchUser(id: number): Promise<User | null> {
 
 export async function fetchUsers(city?: string): Promise<User[]> {
   try {
-    const response = await fetch(API_URL);
-
-    if (!response.ok) {
-      throw new Error(`Ошибка запроса: ${response.status}`);
-    }
-
-    const users = (await response.json()) as User[];
+    const users = await fetchJson<User[]>(API_URL);
 
     if (city === undefined) {
       return users;
