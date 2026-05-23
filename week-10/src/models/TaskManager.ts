@@ -1,21 +1,7 @@
-// src/models/TaskManager.ts
-//
-
-import { Task, type STask } from "./Task";
 import { readFile, writeFile } from "fs/promises";
+import { Task, type STask } from "./Task";
 
-interface TaskManagerActions {
-  load: (filename: string) => Promise<void>;
-  save: (filename: string) => Promise<void>;
-  addTask: (title: string) => number;
-  findTask: (id: number) => Task | null;
-  closeTask: (id: number) => void;
-
-  // Задания, для которых isComplete() => false
-  availableTasks: () => Task[];
-}
-
-export class TaskManager implements TaskManagerActions {
+export class TaskManager {
   private tasks: Task[] = [];
   private nextId = 1;
 
@@ -56,7 +42,15 @@ export class TaskManager implements TaskManagerActions {
     this.findTask(id)?.close();
   }
 
+  removeTask(id: number): void {
+    this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
+
   availableTasks(): Task[] {
     return this.tasks.filter((task) => !task.isComplete());
+  }
+
+  allTasks(): Task[] {
+    return [...this.tasks];
   }
 }

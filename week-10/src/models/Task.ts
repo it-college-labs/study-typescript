@@ -1,5 +1,3 @@
-// src/models/Task.ts
-//
 export interface ITask {
   title: string;
   complete: boolean;
@@ -7,14 +5,9 @@ export interface ITask {
   createdAt: Date;
 }
 
-export type STask = Omit<ITask, 'createdAt'> & { createdAt: string };
+export type STask = Omit<ITask, "createdAt"> & { createdAt: string };
 
-export interface TaskActions {
-  close: () => void;
-  isComplete: () => boolean;
-}
-
-export class Task implements ITask, TaskActions {
+export class Task implements ITask {
   constructor(
     public id: number,
     public title: string,
