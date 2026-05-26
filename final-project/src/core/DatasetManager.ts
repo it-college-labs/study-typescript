@@ -1,4 +1,4 @@
-import type { CreateDatasetInput, Dataset, DatasetFilter, DatasetSummary, UpdateDatasetInput } from "../types";
+import type { CreateDatasetInput, Dataset, DatasetFilter, DatasetListItem, DatasetSummary, UpdateDatasetInput } from "../types";
 
 export class DatasetManager {
   private datasets: Dataset[] = [];
@@ -58,6 +58,16 @@ export class DatasetManager {
         hasMissingValues: dataset.columns.some((column) => column.hasMissingValues),
         targetColumn: dataset.targetColumn
     }
+  }
+
+  getDatasetList(): DatasetListItem[] {
+    return this.datasets.map((dataset) => ({
+        id: dataset.id,
+        name: dataset.name,
+        status: dataset.status,
+        taskType: dataset.taskType, 
+        createdAt: dataset.createdAt,
+    }));
   }
 
   getAllDatasets(): Dataset[] {

@@ -53,3 +53,7 @@ export type UpdateDatasetInput = Partial<
     Omit<Dataset, "id" | "createdAt">
 >;
 
+export type DatasetListItem = Pick<
+    Dataset,
+    "id" | "name" | "status" | "taskType" | "createdAt"
+>;
