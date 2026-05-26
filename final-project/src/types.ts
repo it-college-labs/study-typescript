@@ -46,3 +46,10 @@ export interface DatasetFilter {
     status?: DatasetStatus;
     taskType?: MLTaskType;
 }
+
+export type CreateDatasetInput = Omit<Dataset, 'id' | 'createdAt'>
+
+export type UpdateDatasetInput = Partial<
+    Omit<Dataset, "id" | "createdAt">
+>;
+
