@@ -1,0 +1,23 @@
+{
+  "name": "Housing prices",
+  "filePath": "datasets/housing.csv",
+  "rowCount": 1200,
+  "columns": [
+    {
+      "name": "price",
+      "type": "number",
+      "hasMissingValues": false,
+      "uniqueValuesCount": 980
+    },
+    {
+      "name": "district",
+      "type": "category",
+      "hasMissingValues": true,
+      "uniqueValuesCount": 12
+    }
+  ],
+  "status": "new",
+  "taskType": "regression",
+  "targetColumn": "price",
+  "description": "Dataset for housing price analysis"
+}

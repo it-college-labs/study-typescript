@@ -1,9 +1,4 @@
-import type { Dataset  } from "./types";
+import { renderApp } from "./ui";
 
-const appElement = document.querySelector<HTMLDivElement>("#app");
+renderApp()
 
-if (appElement) {
-    appElement.textContent = "CDM";
-}
-
-export type { Dataset };
