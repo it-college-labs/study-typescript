@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc --noEmit --target ES2022 --module ESNext --moduleResolution Bundler --types node --strict src/index.ts"
+    "build": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^20.14.0",
